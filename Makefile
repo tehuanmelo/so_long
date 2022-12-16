@@ -13,7 +13,7 @@ MLX = ./mlx
 $(NAME):	$(OBJ)
 	@ cd $(LIBFT) && $(MAKE)
 	@ cd $(FT_PRINTF) && $(MAKE)
-	@ cd $(MLX) && $(MAKE)
+	# @ cd $(MLX) && $(MAKE)
 	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT) -L$(FT_PRINTF) -L$(MLX) -lft -lftprintf -lmlx -framework OpenGL -framework AppKit -o $@
 
 all:	$(NAME)
@@ -22,7 +22,7 @@ clean:
 	@ rm -f *.o *.out
 	@ cd $(LIBFT) && $(MAKE) clean
 	@ cd $(FT_PRINTF) && $(MAKE) clean
-	@ cd $(MLX) && $(MAKE) clean
+	# @ cd $(MLX) && $(MAKE) clean
 
 fclean:	clean
 	@ rm -f *.av $(NAME)
