@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 23:55:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/18 20:36:08 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/19 00:06:14 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include "./libft/libft.h"
 #include "./ft_printf/ft_printf.h"
 #include "./mlx/mlx.h"
+#include <stddef.h>
 
 #define BUFFER_SIZE 1000
 
@@ -53,6 +54,7 @@ typedef struct s_player
 
 typedef struct s_game
 {
+    int error;
     void *mlx;
     void *win;
     char **map;
@@ -77,5 +79,6 @@ void write_background(t_game *game);
 void write_elements(t_game *game);
 void draw_image(t_game *game, char type, int x, int y);
 int is_ber(char *file_ber);
+int validate_map(char **map);
 
 #endif

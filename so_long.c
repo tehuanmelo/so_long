@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:05:47 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/18 20:13:07 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/19 00:13:23 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ int main(int ac, char **av)
 	if (ac == 2 && is_ber(av[1]))
 	{
 		t_game game;
-		
+
 		game = game_init(av[1]);
-		
+		if (game.error)
+			return 1;
 
 		write_background(&game);
 		write_elements(&game);
@@ -40,7 +41,6 @@ int main(int ac, char **av)
 		mlx_key_hook(game.win, key_hook, &game);
 		// mlx_loop_hook(game.mlx, update_screen, &game);
 		mlx_loop(game.mlx);
-		
 	}
 
 	return 0;

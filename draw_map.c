@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:21:51 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/18 20:55:47 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/19 00:14:59 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,37 +22,12 @@
 // exit in a clean way, and return "Error\n" followed by an explicit error message of
 // your choice.
 
-
-char *read_map(char *str, int fd)
-{
-	char *buffer;
-	ssize_t flag;
-
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
-		return (NULL);
-	flag = 1;
-	while (flag)
-	{
-		flag = read(fd, buffer, BUFFER_SIZE);
-		buffer[flag] = 0;
-		if (flag == -1)
-		{
-			free(buffer);
-			return (0);
-		}
-		str = ft_strjoin(str, buffer);
-	}
-	free(buffer);
-	return (str);
-}
-
 void write_elements(t_game *game)
 {
 	int i;
 	int j;
-	t_player player;
 	char element;
+	t_player player;
 
 	i = 0;
 	while (game->map[i])
@@ -90,5 +65,4 @@ void write_background(t_game *game)
 		}
 		i++;
 	}
-
 }
