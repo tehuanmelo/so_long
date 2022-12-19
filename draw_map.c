@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:21:51 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/19 00:14:59 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/19 16:36:23 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void write_elements(t_game *game)
 	int i;
 	int j;
 	char element;
-	t_player player;
 
 	i = 0;
 	while (game->map[i])
@@ -39,9 +38,8 @@ void write_elements(t_game *game)
 			draw_image(game, element, j, i);
 			if (element == 'P')
 			{
-				player.position.x = j;
-				player.position.y = i;
-				game->player = player;
+				game->sprites.player.position.x = j;
+				game->sprites.player.position.y = i;
 			}
 			j++;
 		}

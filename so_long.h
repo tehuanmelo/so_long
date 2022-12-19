@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 23:55:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/19 00:06:14 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/19 16:37:04 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,13 @@ typedef struct s_image
     t_position position;
 } t_image;
 
-typedef struct s_player
-{
-    int movements;
-    t_position position;
-} t_player;
+typedef struct s_sprite {
+    t_image wall;
+    t_image land;
+    t_image player;
+    t_image collect;
+    t_image exit;
+} t_sprite;
 
 typedef struct s_game
 {
@@ -58,8 +60,8 @@ typedef struct s_game
     void *mlx;
     void *win;
     char **map;
-    t_player player;
     t_position window_dimension;
+    t_sprite sprites;
 } t_game;
 
 enum key_code
@@ -80,5 +82,6 @@ void write_elements(t_game *game);
 void draw_image(t_game *game, char type, int x, int y);
 int is_ber(char *file_ber);
 int validate_map(char **map);
+void create_sprites(t_game *game);
 
 #endif

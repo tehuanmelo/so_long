@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_game.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/19 00:13:09 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/19 15:46:23 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ t_game game_init(char *file_ber)
         game.mlx = mlx_init();
         game.error = 0;
         game.win = mlx_new_window(game.mlx, game.window_dimension.x, game.window_dimension.y, "So_long!");
+        create_sprites(&game);
     }
     else
         game.error = 1;
