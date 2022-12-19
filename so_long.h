@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 23:55:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/19 16:37:04 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/19 23:13:49 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ typedef struct s_game
     void *mlx;
     void *win;
     char **map;
+    int player_count;
+    int collect_count;
+    int exit_count;
     t_position window_dimension;
     t_sprite sprites;
 } t_game;
@@ -74,7 +77,7 @@ enum key_code
 };
 
 t_image create_image(t_game *game, char type);
-t_game game_init(char *file_ber);
+void game_init(char *file_ber, t_game *game);
 void player_animation(t_game *game, int direction);
 char *read_map(char *str, int fd);
 void write_background(t_game *game);

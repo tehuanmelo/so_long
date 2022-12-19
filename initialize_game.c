@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_game.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/19 15:46:23 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/19 23:24:41 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,14 @@ t_position get_window_dimension(char **map)
     return dimension;
 }
 
-t_game game_init(char *file_ber)
+void game_init(char *file_ber, t_game *game)
 {
     int fd;
     int map_is_valid;
     char *str;
     char *map_ber;
     char **map;
-    t_game game;
-
+    
     map_ber = ft_strjoin("./map/", file_ber);
     str = malloc(sizeof(char));
     fd = open(map_ber, O_RDONLY);
@@ -88,14 +87,24 @@ t_game game_init(char *file_ber)
     map_is_valid = validate_map(map);
     if (map_is_valid)
     {
-        game.window_dimension = get_window_dimension(map);
-        game.map = map;
-        game.mlx = mlx_init();
-        game.error = 0;
-        game.win = mlx_new_window(game.mlx, game.window_dimension.x, game.window_dimension.y, "So_long!");
-        create_sprites(&game);
+        game->window_dimension = get_window_dimension(map);
+        game->map = map;
+        game->mlx = mlx_init();
+        game->error = 0;
+        game->win = mlx_new_window(game->mlx, game->window_dimension.x, game->window_dimension.y, "So_long!");
+        game->player_count = 0;
+        game->collect_count = 0;
+        game->exit_count = 0;
+        create_sprites(game);
+        write_background(game);
+		write_elements(game);
+        if (game->player_count != 1)
+            game->error = 1;
+        else if (game->exit_count != 1)
+            game->error = 1;
+        else if (game->collect_count < 1)
+            game->error = 1;
     }
     else
-        game.error = 1;
-    return game;
+        game->error = 1;
 }

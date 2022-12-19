@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:43:08 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/19 17:32:02 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/19 23:41:27 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int is_retangular(char **map)
+int is_rectangular(char **map)
 {
     int i;
     int first_line;
@@ -22,44 +22,43 @@ int is_retangular(char **map)
     while (map[i])
     {
         if ((int)ft_strlen(map[i]) != first_line)
-        {
-            ft_printf("Error! The map is not retangular!");
             return 0;
-        }
         i++;
     }
     if (i == first_line)
-    {
-        ft_printf("Error! The map is not retangular!");
         return 0;
-    }
     return 1;
 }
 
-int have_walls(char **map)
+int check_walls(char **map)
 {
     int i;
     int j;
     int last_col;
 
-    last_col = (int)ft_strlen(map[0]) - 1;
+    last_col = (int)ft_strlen(map[0]);
     i = 0;
     while (map[i])
     {
-        j = 0;
-        if (map[i][j] != '1' || map[i][last_col] != '1')
+        if (map[i][0] != '1' || map[i][last_col - 1] != '1')
             return 0;
         i++;
     }
-
+    j = 0;
+    while (map[0][j])
+    {
+        if (map[0][j] != '1' || map[i - 1][j] != '1')
+            return 0;
+        j++;
+    }
     return 1;
 }
 
 int validate_map(char **map)
 {
-    if (is_retangular(map))
+    if (is_rectangular(map))
     {
-        if (have_walls(map))
+        if (check_walls(map))
             return 1;
     }
 
