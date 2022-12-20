@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:31:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/19 16:19:43 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/20 13:56:46 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_image create_image(t_game *game, char type)
 	else if (type == '1')
 		image.path = WALL;
 	else if (type == 'P')
-		image.path = PLAYER;
+		image.path = WALK;
 	else if (type == 'E')
 		image.path = EXIT;
 	else if (type == 'C')

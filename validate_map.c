@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:43:08 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/19 23:41:27 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/20 12:42:52 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,29 @@ int check_walls(char **map)
     return 1;
 }
 
+int check_map_char_struct(char **map)
+{
+    int i;
+	int j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if(map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'P' && map[i][j] != 'E' && map[i][j] != 'C')
+				return 0;
+			j++;
+		}
+		i++;
+	}
+    return 1;
+}
+
 int validate_map(char **map)
 {
-    if (is_rectangular(map))
-    {
-        if (check_walls(map))
-            return 1;
-    }
-
+    if (is_rectangular(map) && check_map_char_struct(map) && check_walls(map))
+        return 1;
     return 0;
 }

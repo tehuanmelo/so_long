@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:21:51 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/19 23:42:08 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/20 12:37:25 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void write_background(t_game *game)
 		j = 0;
 		while (game->map[i][j])
 		{
+			if(game->map[i][j] != '0' && game->map[i][j] != '1' && game->map[i][j] != 'P' && game->map[i][j] != 'E' && game->map[i][j] != 'C')
+				game->error = 1;
 			draw_image(game, '0', j, i);
 			j++;
 		}

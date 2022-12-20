@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 23:55:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/19 23:13:49 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/20 13:59:07 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 #define LAND "./sprites/land.xpm"
 #define EXIT "./sprites/exit.xpm"
 #define COLLECT "./sprites/collect.xpm"
-#define PLAYER "./sprites/player.xpm"
+#define WALK "./sprites/player.xpm"
 
 typedef struct s_position
 {
@@ -86,5 +86,6 @@ void draw_image(t_game *game, char type, int x, int y);
 int is_ber(char *file_ber);
 int validate_map(char **map);
 void create_sprites(t_game *game);
+void end_game(t_game *game);
 
 #endif
