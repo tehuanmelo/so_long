@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 23:55:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/20 13:59:07 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/20 19:25:59 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void draw_image(t_game *game, char type, int x, int y);
 int is_ber(char *file_ber);
 int validate_map(char **map);
 void create_sprites(t_game *game);
-void end_game(t_game *game);
+int end_game(t_game *game);
+void print_map(char **map);
 
 #endif

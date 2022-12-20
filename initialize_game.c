@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_game.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/20 12:45:10 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/20 18:46:41 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void initialize_map(t_game *game)
 void game_init(char *file_ber, t_game *game)
 {
     int fd;
-    int map_is_valid;
     char *str;
     char *map_ber_path;
     char **map;
@@ -107,14 +106,16 @@ void game_init(char *file_ber, t_game *game)
     fd = open(map_ber_path, O_RDONLY);
     str = read_map(str, fd);
     map = ft_split(str, '\n');
-    free(str);
 
-    map_is_valid = validate_map(map);
-    if (map_is_valid)
+    if (validate_map(map))
     {
+        str = read_map(str, fd);
+        map = ft_split(str, '\n');
+        print_map(map);
         initialize_game_struct(game, map);
         initialize_map(game);
     }
     else
         game->error = 1;
+    free(str);
 }
