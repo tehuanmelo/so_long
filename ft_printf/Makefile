@@ -4,9 +4,11 @@ OBJ = $(SRC:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-$(NAME): $(OBJ)
-		ar r $(NAME) $(OBJ)
 .SILENT:
+
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
+
 
 all: $(NAME)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_game.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/20 18:46:41 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/21 22:34:38 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int is_ber(char *file_ber)
     str = ft_strrchr(file_ber, '.');
     if (ft_strlen(str) == 4)
     {
-        if (!(ft_strncmp(str, ".ber", 3)))
+        if (!(ft_strncmp(str, ".ber", 4)))
             return 1;
     }
     ft_printf("Error! File .ber not found");
@@ -76,25 +76,23 @@ void initialize_game_struct(t_game *game, char **map)
     game->mlx = mlx_init();
     game->error = 0;
     game->win = mlx_new_window(game->mlx, game->window_dimension.x, game->window_dimension.y, "So_long!");
-    game->player_count = 0;
-    game->collect_count = 0;
+    game->count_movements = 0;
     game->exit_count = 0;
+    game->player_count = 0;
+    game->collects_taken = 0;
 }
 
 void initialize_map(t_game *game)
 {
     create_sprites(game);
-    write_background(game);
-    write_elements(game);
+    draw_map(game);
     if (game->player_count != 1)
         game->error = 1;
     else if (game->exit_count != 1)
         game->error = 1;
-    else if (game->collect_count < 1)
-        game->error = 1;
 }
 
-void game_init(char *file_ber, t_game *game)
+int game_init(char *file_ber, t_game *game)
 {
     int fd;
     char *str;
@@ -102,20 +100,24 @@ void game_init(char *file_ber, t_game *game)
     char **map;
 
     map_ber_path = ft_strjoin("./map/", file_ber);
-    str = malloc(sizeof(char));
+    str = "";
     fd = open(map_ber_path, O_RDONLY);
-    str = read_map(str, fd);
-    map = ft_split(str, '\n');
-
-    if (validate_map(map))
+    if (fd != -1)
     {
         str = read_map(str, fd);
         map = ft_split(str, '\n');
-        print_map(map);
-        initialize_game_struct(game, map);
-        initialize_map(game);
+        if (validate_map(map))
+        {
+            str = read_map(str, fd);
+            map = ft_split(str, '\n');
+            initialize_game_struct(game, map);
+            initialize_map(game);
+            close(fd);
+            free(str);
+            return 1;
+        }
+        close(fd);
+        free(str);
     }
-    else
-        game->error = 1;
-    free(str);
+    return 0;
 }

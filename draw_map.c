@@ -6,13 +6,13 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:21:51 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/20 12:37:25 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/21 22:01:46 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void write_elements(t_game *game)
+void draw_map(t_game *game)
 {
 	int i;
 	int j;
@@ -24,40 +24,45 @@ void write_elements(t_game *game)
 		j = 0;
 		while (game->map[i][j])
 		{
-			element = game->map[i][j];
-			draw_image(game, element, j, i);
-			if (element == 'P')
+			if (game->map[i][j] == '0')
+				draw_image(game, '0', j, i);
+			else
 			{
-				game->sprites.player.position.x = j;
-				game->sprites.player.position.y = i;
-				game->player_count++;
+				element = game->map[i][j];
+				draw_image(game, '0', j, i);
+				draw_image(game, element, j, i);
+				if (element == 'P')
+				{
+					game->player_position.x = j;
+					game->player_position.y = i;
+					game->player_count++;
+				}
+				else if (element == 'E')
+					game->exit_count++;
 			}
-			else if (element == 'C')
-				game->collect_count++;
-			else if (element == 'E')
-				game->exit_count++;
+
 			j++;
 		}
 		i++;
 	}
 }
 
-void write_background(t_game *game)
-{
-	int i;
-	int j;
+// void write_background(t_game *game)
+// {
+// 	int i;
+// 	int j;
 
-	i = 0;
-	while (game->map[i])
-	{
-		j = 0;
-		while (game->map[i][j])
-		{
-			if(game->map[i][j] != '0' && game->map[i][j] != '1' && game->map[i][j] != 'P' && game->map[i][j] != 'E' && game->map[i][j] != 'C')
-				game->error = 1;
-			draw_image(game, '0', j, i);
-			j++;
-		}
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (game->map[i])
+// 	{
+// 		j = 0;
+// 		while (game->map[i][j])
+// 		{
+// 			if (game->map[i][j] != '0' && game->map[i][j] != '1' && game->map[i][j] != 'P' && game->map[i][j] != 'E' && game->map[i][j] != 'C')
+// 				game->error = 1;
+// 			draw_image(game, '0', j, i);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }

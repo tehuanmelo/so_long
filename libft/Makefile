@@ -12,11 +12,11 @@ OBJ2 = $(SRC2:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
+.SILENT:
 
 $(NAME):	$(OBJ)
-	@ ar rcs $(NAME) $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
-.SILENT:
 
 all:	$(NAME) 
 

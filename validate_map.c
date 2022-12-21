@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:43:08 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/20 18:46:02 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/21 16:35:23 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void print_map(char **map)
-{
-    int i;
-    int j;
-
-    i = 0;
-    while (map[i])
-    {
-        j = 0;
-        while (map[i][j])
-        {
-            printf("%c", map[i][j]);
-            j++;
-        }
-        printf("\n");
-        i++;
-    }
-}
 
 int is_rectangular(char **map)
 {
@@ -93,7 +74,34 @@ int check_map_char_struct(char **map)
     return 1;
 }
 
-int is_valid_exit(char **map)
+int validate_collects(char **map)
+{
+    int i;
+    int j;
+    int collects;
+
+    i = 1;
+    collects = 0;
+    while (map[i])
+    {
+        j = 1;
+        while (map[i][j])
+        {
+            if (map[i][j] == 'C')
+            {
+                if (map[i + 1][j] == 'X' || map[i - 1][j] == 'X' || map[i][j + 1] == 'X' || map[i][j - 1] == 'X')
+                    collects++;
+                else
+                    return 0;
+            }
+            j++;
+        }
+        i++;
+    }
+    return collects;
+}
+
+int validate_exit(char **map)
 {
     int i;
     int j;
@@ -124,16 +132,20 @@ int mark_path(char **map, int i, int j)
 
 int check_path(char **map, int i, int j)
 {
-    if (map[i + 1][j] == '0')
-        return mark_path(map, i + 1, j);
-    else if (map[i - 1][j] == '0')
-        return mark_path(map, i - 1, j);
-    else if (map[i][j + 1] == '0')
-        return mark_path(map, i, j + 1);
-    else if (map[i][j - 1] == '0')
-        return mark_path(map, i, j - 1);
-    else
-        return 0;
+    if (map[i][j] == 'P')
+        return mark_path(map, i, j);
+    else if (map[i][j] == 'X')
+    {
+        if (map[i + 1][j] == '0')
+            return mark_path(map, i + 1, j);
+        else if (map[i - 1][j] == '0')
+            return mark_path(map, i - 1, j);
+        else if (map[i][j + 1] == '0')
+            return mark_path(map, i, j + 1);
+        else if (map[i][j - 1] == '0')
+            return mark_path(map, i, j - 1);
+    }
+    return 0;
 }
 
 int validate_path(char **map)
@@ -152,18 +164,31 @@ int validate_path(char **map)
             j = 1;
             while (map[i][j])
             {
-                if (map[i][j] == 'P')
-                    flag = mark_path(map, i, j);
-                if (map[i][j] == 'X')
-                    flag = flag || check_path(map, i, j);
+                flag = flag || check_path(map, i, j);
                 j++;
             }
             i++;
         }
     }
-    if (is_valid_exit(map))
+    if (validate_exit(map) &&  validate_collects(map))
         return 1;
     return 0;
+}
+
+void print_map(char **map)
+{
+    int i = 0;
+    while (map[i])
+    {
+        int j = 0;
+        while (map[i][j])
+        {
+            printf("%c", map[i][j]);
+            j++;
+        }
+        printf("\n");
+        i++;
+    }
 }
 
 int validate_map(char **map)

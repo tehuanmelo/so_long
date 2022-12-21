@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:05:47 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/20 19:29:51 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/21 22:23:18 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ int key_hook(int keycode, t_game *game)
 
 int main(int ac, char **av)
 {
+	int start_game;
 	if (ac == 2 && is_ber(av[1]))
 	{
 		t_game game;
 
-		game_init(av[1], &game);
-		if (game.error)
+		start_game = game_init(av[1], &game);
+		if (game.error || !start_game)
 		{
-			ft_printf("Error!\n");
+			ft_printf("Error! Check the map configuration\n");
 			return 1;
 		}
 		

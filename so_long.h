@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 23:55:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/20 19:25:59 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/21 22:24:35 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,15 @@
 
 #define BUFFER_SIZE 1000
 
-#define WALL "./sprites/wall.xpm"
-#define LAND "./sprites/land.xpm"
-#define EXIT "./sprites/exit.xpm"
-#define COLLECT "./sprites/collect.xpm"
-#define WALK "./sprites/player.xpm"
+#define WALL "./sprites/tree3.xpm"
+#define LAND "./sprites/land5.xpm"
+#define EXIT "./sprites/exit3.xpm"
+#define COLLECT "./sprites/sushi1.xpm"
+#define WALK_RIGHT "./sprites/ninja_walk_right.xpm"
+#define WALK_LEFT "./sprites/ninja_walk_left.xpm"
+#define WALK_UP "./sprites/ninja_walk_up.xpm"
+#define WALK_DOWN "./sprites/ninja_walk_down.xpm"
+
 
 typedef struct s_position
 {
@@ -43,13 +47,15 @@ typedef struct s_image
     char *path;
     int width;
     int height;
-    t_position position;
 } t_image;
 
 typedef struct s_sprite {
     t_image wall;
     t_image land;
-    t_image player;
+    t_image player_right;
+    t_image player_left;
+    t_image player_up;
+    t_image player_down;
     t_image collect;
     t_image exit;
 } t_sprite;
@@ -60,10 +66,12 @@ typedef struct s_game
     void *mlx;
     void *win;
     char **map;
+    int count_movements;
+    int collects_taken;
     int player_count;
-    int collect_count;
     int exit_count;
     t_position window_dimension;
+    t_position player_position;
     t_sprite sprites;
 } t_game;
 
@@ -77,16 +85,14 @@ enum key_code
 };
 
 t_image create_image(t_game *game, char type);
-void game_init(char *file_ber, t_game *game);
+int game_init(char *file_ber, t_game *game);
 void player_animation(t_game *game, int direction);
 char *read_map(char *str, int fd);
-void write_background(t_game *game);
-void write_elements(t_game *game);
+void draw_map(t_game *game);
 void draw_image(t_game *game, char type, int x, int y);
 int is_ber(char *file_ber);
 int validate_map(char **map);
 void create_sprites(t_game *game);
 int end_game(t_game *game);
 void print_map(char **map);
-
 #endif
