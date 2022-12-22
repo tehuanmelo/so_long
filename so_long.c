@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:05:47 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/22 17:59:33 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/22 21:45:10 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 	int		start_game;
 	t_game	game;
 
-	if (ac == 2)
+	if (ac == 2 && is_ber(av[1]))
 	{
 		start_game = game_init(av[1], &game);
 		if (!start_game)

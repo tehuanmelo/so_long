@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 23:55:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/22 18:19:57 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/22 21:51:50 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include "./ft_printf/ft_printf.h"
 #include "./mlx/mlx.h"
 #include <stddef.h>
+#include <errno.h>
 
 #define BUFFER_SIZE 1000
 
@@ -85,14 +86,29 @@ enum key_code
     SDOWN = 1
 };
 
+char    *read_map(char *str, int fd);
+void    player_animation(t_game *game, int direction);
+void    draw_map(t_game *game);
+void    draw_image(t_game *game, char type, int x, int y);
+void    create_sprites(t_game *game);
+void	move_right(t_game *game);
+void	move_left(t_game *game);
+void	move_up(t_game *game);
+void	move_down(t_game *game);
+void	initialize_game_struct(t_game *game, char **map);
+int     is_ber(char *file_name);
+int     game_init(char *file_ber, t_game *game);
+int     validate_map(char **map);
+int     end_game(t_game *game);
+int	    check_position(t_game *game, int x, int y);
+int	    check_walls(char **map);
+int	    is_rectangular(char **map);
+int	    validate_exit(char **map);
+int	    validate_collects(char **map);
+int	    check_map_char_struct(char **map);
 t_image create_image(t_game *game, char type);
-int game_init(char *file_ber, t_game *game);
-void player_animation(t_game *game, int direction);
-char *read_map(char *str, int fd);
-void draw_map(t_game *game);
-void draw_image(t_game *game, char type, int x, int y);
-int validate_map(char **map);
-void create_sprites(t_game *game);
-int end_game(t_game *game);
-void print_map(char **map);
+t_position	get_window_dimension(char **map);
+char	*read_map(char *str, int fd);
+
+
 #endif
