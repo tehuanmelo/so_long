@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 23:55:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/21 22:24:35 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/22 18:19:57 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@
 
 #define BUFFER_SIZE 1000
 
-#define WALL "./sprites/tree3.xpm"
-#define LAND "./sprites/land5.xpm"
-#define EXIT "./sprites/exit3.xpm"
-#define COLLECT "./sprites/sushi1.xpm"
-#define WALK_RIGHT "./sprites/ninja_walk_right.xpm"
-#define WALK_LEFT "./sprites/ninja_walk_left.xpm"
-#define WALK_UP "./sprites/ninja_walk_up.xpm"
-#define WALK_DOWN "./sprites/ninja_walk_down.xpm"
+#define WALL "./wall.xpm"
+#define LAND "./land.xpm"
+#define EXIT "./exit.xpm"
+#define COLLECT "./collect.xpm"
+#define WALK_RIGHT "./walk_right.xpm"
+#define WALK_LEFT "./walk_left.xpm"
+#define WALK_UP "./walk_up.xpm"
+#define WALK_DOWN "./walk_down.xpm"
 
 
 typedef struct s_position
@@ -62,14 +62,11 @@ typedef struct s_sprite {
 
 typedef struct s_game
 {
-    int error;
     void *mlx;
     void *win;
     char **map;
     int count_movements;
     int collects_taken;
-    int player_count;
-    int exit_count;
     t_position window_dimension;
     t_position player_position;
     t_sprite sprites;
@@ -81,7 +78,11 @@ enum key_code
     LEFT = 123,
     RIGHT = 124,
     UP = 126,
-    DOWN = 125
+    DOWN = 125,
+    ALEFT = 0,
+    DRIGHT = 2,
+    WUP = 13,
+    SDOWN = 1
 };
 
 t_image create_image(t_game *game, char type);
@@ -90,7 +91,6 @@ void player_animation(t_game *game, int direction);
 char *read_map(char *str, int fd);
 void draw_map(t_game *game);
 void draw_image(t_game *game, char type, int x, int y);
-int is_ber(char *file_ber);
 int validate_map(char **map);
 void create_sprites(t_game *game);
 int end_game(t_game *game);
