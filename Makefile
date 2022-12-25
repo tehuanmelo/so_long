@@ -14,7 +14,7 @@ MLX = ./mlx
 $(NAME):	$(OBJ)
 	cd $(FT_PRINTF) && $(MAKE)
 	cd $(LIBFT) && $(MAKE)
-	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT) -L$(FT_PRINTF) -L$(MLX) -lft -lftprintf -lmlx -framework OpenGL -framework AppKit -o $@
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT)/libft.a $(FT_PRINTF)/libftprintf.a $(MLX)/libmlx.a -framework OpenGL -framework AppKit -o $@
 	echo "Compilation done successfully!"
 	echo "Execute ./so_long file.ber"
 

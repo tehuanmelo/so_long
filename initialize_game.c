@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/22 21:44:23 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/25 22:44:38 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,35 @@ void	initialize_map(t_game *game)
 	draw_map(game);
 }
 
+void free_map(char **map)
+{
+	int i;
+	
+	i = 0;
+    while (map[i])
+    {
+        free(map[i]);
+        i++;
+    }
+    free(map);
+}
+
 int	game_init(char *file_ber, t_game *game)
 {
 	int fd;
 	char *str;
 	char *map_ber_path;
+	char **map_validation;
 	char **map;
 
 	map_ber_path = file_ber;
-	str = "";
+	str = malloc(sizeof(char));
 	fd = open(map_ber_path, O_RDONLY);
 	if (fd != -1)
 	{
 		str = read_map(str, fd);
-		map = ft_split(str, '\n');
-		if (validate_map(map))
+		map_validation = ft_split(str, '\n');
+		if (validate_map(map_validation))
 		{
 			str = read_map(str, fd);
 			map = ft_split(str, '\n');
@@ -40,10 +54,13 @@ int	game_init(char *file_ber, t_game *game)
 			initialize_map(game);
 			close(fd);
 			free(str);
+			free_map(map_validation);
 			return (1);
 		}
 		close(fd);
 		free(str);
+		free(map_validation);
+	
 	}
 	else	
 	{

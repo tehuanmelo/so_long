@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:24:54 by tde-melo          #+#    #+#             */
-/*   Updated: 2022/12/21 21:41:07 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/25 22:13:51 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*new;
 	size_t	length;
+	char *free_str;
 	int		i;
 
+	free_str = s1;
 	if (!(s1 && s2))
 		return (NULL);
 	length = ft_strlen(s1) + ft_strlen(s2);
@@ -43,6 +45,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (*s2)
 		new[i++] = *s2++;
 	new[i] = 0;
+	free(free_str);
 	return (new);
 }
 

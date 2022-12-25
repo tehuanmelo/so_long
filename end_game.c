@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:03:36 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/21 22:12:23 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/25 22:41:19 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int end_game(t_game *game)
     mlx_destroy_image(game->mlx, game->sprites.player_up.img);
     mlx_destroy_image(game->mlx, game->sprites.wall.img);
     mlx_destroy_image(game->mlx, game->sprites.land.img);
-    free(game->map);
+    free_map(game->map);
     exit(0);
 }

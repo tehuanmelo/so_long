@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 23:55:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/22 21:51:50 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/25 22:54:00 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@
 
 #define BUFFER_SIZE 1000
 
-#define WALL "./wall.xpm"
-#define LAND "./land.xpm"
-#define EXIT "./exit.xpm"
-#define COLLECT "./collect.xpm"
-#define WALK_RIGHT "./walk_right.xpm"
-#define WALK_LEFT "./walk_left.xpm"
-#define WALK_UP "./walk_up.xpm"
-#define WALK_DOWN "./walk_down.xpm"
+#define WALL "./sprites/wall.xpm"
+#define LAND "./sprites/land.xpm"
+#define EXIT "./sprites/exit.xpm"
+#define COLLECT "./sprites/collect.xpm"
+#define WALK_RIGHT "./sprites/walk_right.xpm"
+#define WALK_LEFT "./sprites/walk_left.xpm"
+#define WALK_UP "./sprites/walk_up.xpm"
+#define WALK_DOWN "./sprites/walk_down.xpm"
+// #define ENEMY "./sprites/enemy.xpm"
 
 
 typedef struct s_position
@@ -95,6 +96,7 @@ void	move_right(t_game *game);
 void	move_left(t_game *game);
 void	move_up(t_game *game);
 void	move_down(t_game *game);
+void free_map(char **map);
 void	initialize_game_struct(t_game *game, char **map);
 int     is_ber(char *file_name);
 int     game_init(char *file_ber, t_game *game);

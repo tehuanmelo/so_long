@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:43:08 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/22 21:08:25 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/23 21:21:15 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ int	validate_path(char **map)
 
 int	validate_map(char **map)
 {
-	if (is_rectangular(map) && check_map_char_struct(map) && check_walls(map)
+	if (!map)
+		return 0;
+	else if (is_rectangular(map) && check_map_char_struct(map) && check_walls(map)
 		&& validate_path(map) && validate_collects(map))
 		return 1;
 	else

@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/22 21:54:17 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/25 22:11:01 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	*read_map(char *str, int fd)
 {
 	char	*buffer;
+	// char	*free_join;
 	ssize_t	flag;
 
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
