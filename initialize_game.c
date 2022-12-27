@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/27 16:33:54 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/27 17:15:34 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	game_init(char *file_ber, t_game *game)
 
 	map_ber_path = file_ber;
 	str = malloc(sizeof(char));
+	str[0] = '\0';
 	fd = open(map_ber_path, O_RDONLY);
 	if (fd != -1)
 	{
@@ -58,7 +59,6 @@ int	game_init(char *file_ber, t_game *game)
 			return (1);
 		}
 		close(fd);
-		free(str);
 		free(map_validation);
 	
 	}
