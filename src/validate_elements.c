@@ -6,21 +6,35 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:43:08 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/22 20:50:32 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/27 23:40:11 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+int check_player_exit(char c)
+{
+	
+	int	static exit;
+	int	static player;
+
+	if (c == 'P')
+		player++;
+	else if (c == 'E')
+		exit++;
+	if (player == 1 && exit == 1)
+		return 1;
+	else 
+		return 0;
+}
+
 int	check_map_char_struct(char **map)
 {
 	int	i;
 	int	j;
-	int	exit;
-	int	player;
-
-	exit = 0;
-	player = 0;
+	int flag;
+	
+	flag = 0;
 	i = 0;
 	while (map[i])
 	{
@@ -30,15 +44,13 @@ int	check_map_char_struct(char **map)
 			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'P'
 				&& map[i][j] != 'E' && map[i][j] != 'C')
 				return (0);
-			else if (map[i][j] == 'P')
-				player++;
-			else if (map[i][j] == 'E')
-				exit++;
+			else if (map[i][j] == 'P' || map[i][j] == 'E')
+				flag = check_player_exit(map[i][j]);
 			j++;
 		}
 		i++;
 	}
-	if (exit == 1 && player == 1)
+	if (flag)
 		return (1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_game_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/27 17:29:43 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/27 23:12:10 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,4 @@ t_position	get_window_dimension(char **map)
 	return (dimension);
 }
 
-void	initialize_game_struct(t_game *game, char **map)
-{
-	game->window_dimension = get_window_dimension(map);
-	game->map = map;
-	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, game->window_dimension.x,
-			game->window_dimension.y, "So_long!");
-	game->count_movements = 0;
-	game->collects_taken = 0;
-}
+
