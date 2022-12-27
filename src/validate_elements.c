@@ -12,7 +12,6 @@
 
 #include "so_long.h"
 
-
 int	check_map_char_struct(char **map)
 {
 	int	i;
@@ -95,4 +94,3 @@ int	validate_exit(char **map)
 	}
 	return (0);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_game.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/27 17:15:34 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/27 18:00:52 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,26 @@ void	initialize_map(t_game *game)
 	draw_map(game);
 }
 
-void free_map(char **map)
+void	free_map(char **map)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
-    while (map[i])
-    {
-        free(map[i]);
-        i++;
-    }
-    free(map);
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }
 
 int	game_init(char *file_ber, t_game *game)
 {
-	int fd;
-	char *str;
-	char *map_ber_path;
-	char **map_validation;
-	char **map;
+	int		fd;
+	char	*str;
+	char	*map_ber_path;
+	char	**map_validation;
+	char	**map;
 
 	map_ber_path = file_ber;
 	str = malloc(sizeof(char));
@@ -60,9 +60,8 @@ int	game_init(char *file_ber, t_game *game)
 		}
 		close(fd);
 		free(map_validation);
-	
 	}
-	else	
+	else
 	{
 		ft_printf("Error\n");
 		perror("");

@@ -6,16 +6,16 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:21:51 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/22 17:45:31 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/27 17:59:34 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void draw_background(t_game *game)
+void	draw_background(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (game->map[i])
@@ -30,11 +30,11 @@ void draw_background(t_game *game)
 	}
 }
 
-void draw_map(t_game *game)
+void	draw_map(t_game *game)
 {
-	int i;
-	int j;
-	char element;
+	int		i;
+	int		j;
+	char	element;
 
 	draw_background(game);
 	i = 0;
@@ -50,9 +50,8 @@ void draw_map(t_game *game)
 				game->player_position.x = j;
 				game->player_position.y = i;
 			}
-		j++;
+			j++;
 		}
-
-	i++;
+		i++;
 	}
 }

@@ -12,8 +12,6 @@
 
 #include "so_long.h"
 
-
-
 void	move_right(t_game *game)
 {
 	int	valid_position;
@@ -81,4 +79,3 @@ void	move_down(t_game *game)
 		game->player_position.y = new_y_position;
 	}
 }
-

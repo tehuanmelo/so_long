@@ -53,4 +53,3 @@ int	check_walls(char **map)
 	}
 	return (1);
 }
-

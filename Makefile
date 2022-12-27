@@ -1,13 +1,13 @@
 NAME = so_long
-SRC = $(wildcard ./*c)
+SRC = $(wildcard ./src/*.c)
 OBJ = $(SRC:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
 # PATHS
-LIBFT = ./libft
-FT_PRINTF = ./ft_printf
-MLX = ./mlx
+LIBFT = ./inc/libft
+FT_PRINTF = ./inc/ft_printf
+MLX = ./inc/mlx
 
 .SILENT:
 
@@ -21,12 +21,12 @@ $(NAME):	$(OBJ)
 all:	$(NAME)
 
 clean:
-	 rm -f *.o *.out
+	 rm -f ./src/*.o ./src/*.out
 	 cd $(LIBFT) && $(MAKE) clean
 	 cd $(FT_PRINTF) && $(MAKE) clean
 
 fclean:	clean
-	 rm -f *.av $(NAME)
+	 rm -f $(NAME)
 	 cd $(LIBFT) && $(MAKE) fclean
 	 cd $(FT_PRINTF) && $(MAKE) fclean
 

@@ -36,18 +36,18 @@ char	*read_map(char *str, int fd)
 	return (str);
 }
 
-int is_ber(char *file_name)
+int	is_ber(char *file_name)
 {
-	char *str;
-	
+	char	*str;
+
 	str = ft_strrchr(file_name, '.');
 	if (ft_strlen(str) == 4)
 	{
 		if (!ft_strncmp(".ber", str, 4))
-			return 1;
+			return (1);
 	}
 	ft_printf("Error\n<filename>.ber not found");
-	return 0;
+	return (0);
 }
 
 t_position	get_window_dimension(char **map)
@@ -75,8 +75,7 @@ void	initialize_game_struct(t_game *game, char **map)
 	game->map = map;
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, game->window_dimension.x,
-	game->window_dimension.y, "So_long!");
+			game->window_dimension.y, "So_long!");
 	game->count_movements = 0;
 	game->collects_taken = 0;
 }
-

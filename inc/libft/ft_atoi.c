@@ -46,14 +46,14 @@ int	ft_atoi(const char *str)
 	return (res * sign);
 }
 
- int main()
- {
-    printf("%d\n", ft_atoi("    9223372036854775806   "));
-    printf("%d\n", atoi("    9223372036854775807   "));
-    printf("%d\n", ft_atoi("	-9223372036854775808  "));
-    printf("%d\n", atoi("	-9223372036854775808    "));
-    printf("%d\n", ft_atoi("-+42"));
-    printf("%d\n", atoi("-+42"));
-    printf("%d\n", ft_atoi("--1"));
-    printf("%d\n", atoi("--1"));
- }
+int	main(void)
+{
+	printf("%d\n", ft_atoi("    9223372036854775806   "));
+	printf("%d\n", atoi("    9223372036854775807   "));
+	printf("%d\n", ft_atoi("	-9223372036854775808  "));
+	printf("%d\n", atoi("	-9223372036854775808    "));
+	printf("%d\n", ft_atoi("-+42"));
+	printf("%d\n", atoi("-+42"));
+	printf("%d\n", ft_atoi("--1"));
+	printf("%d\n", atoi("--1"));
+}
