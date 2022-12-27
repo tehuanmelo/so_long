@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 23:55:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/25 22:54:00 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/27 16:34:06 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	move_right(t_game *game);
 void	move_left(t_game *game);
 void	move_up(t_game *game);
 void	move_down(t_game *game);
-void free_map(char **map);
+void    free_map(char **map);
 void	initialize_game_struct(t_game *game, char **map);
 int     is_ber(char *file_name);
 int     game_init(char *file_ber, t_game *game);
