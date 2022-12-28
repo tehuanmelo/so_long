@@ -1,5 +1,5 @@
 NAME = libftprintf.a
-SRC = $(wildcard ./*c)
+SRC = ft_printf.c ft_putchar.c ft_puthex.c ft_putnbr.c ft_putstr.c
 OBJ = $(SRC:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror

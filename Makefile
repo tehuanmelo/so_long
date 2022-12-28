@@ -1,5 +1,8 @@
 NAME = so_long
-SRC = $(wildcard ./src/*.c)
+SRCPATH = ./src/
+SRCFILES = create_image.c draw_map.c end_game.c initialize_game.c initialize_game_utils.c player_animation.c\
+player_animation_utils.c so_long.c validate_elements.c validate_map.c validate_path.c
+SRC = $(foreach FILE,$(SRCFILES),./src/$(FILE))
 OBJ = $(SRC:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
