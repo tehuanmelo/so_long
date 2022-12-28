@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/27 23:12:10 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/28 13:40:53 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	is_ber(char *file_name)
 		if (!ft_strncmp(".ber", str, 4))
 			return (1);
 	}
-	ft_printf("Error\n<filename>.ber not found");
 	return (0);
 }
 
