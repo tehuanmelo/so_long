@@ -5,7 +5,7 @@ player_animation_utils.c so_long.c validate_elements.c validate_map.c validate_p
 SRC = $(foreach FILE,$(SRCFILES),./src/$(FILE))
 OBJ = $(SRC:.c=.o)
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
 
 # PATHS
 LIBFT = ./inc/libft

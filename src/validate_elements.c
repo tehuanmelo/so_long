@@ -12,28 +12,27 @@
 
 #include "so_long.h"
 
-int check_player_exit(char c)
+int	check_player_exit(char c)
 {
-	
-	int	static exit;
-	int	static player;
+	int static	exit;
+	int static	player;
 
 	if (c == 'P')
 		player++;
 	else if (c == 'E')
 		exit++;
 	if (player == 1 && exit == 1)
-		return 1;
-	else 
-		return 0;
+		return (1);
+	else
+		return (0);
 }
 
 int	check_map_char_struct(char **map)
 {
 	int	i;
 	int	j;
-	int flag;
-	
+	int	flag;
+
 	flag = 0;
 	i = 0;
 	while (map[i])

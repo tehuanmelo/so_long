@@ -6,7 +6,7 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 23:55:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/27 18:08:02 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:29:50 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_game
 	void		*win;
 	char		**map;
 	int			count_movements;
+	int			count_collects;
 	int			collects_taken;
 	t_position	window_dimension;
 	t_position	player_position;
@@ -107,8 +108,8 @@ int				is_rectangular(char **map);
 int				validate_exit(char **map);
 int				validate_collects(char **map);
 int				check_map_char_struct(char **map);
+int				count_collects(char **map);
 t_image			create_image(t_game *game, char type);
 t_position		get_window_dimension(char **map);
-char			*read_map(char *str, int fd);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_animation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:28:27 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/22 20:41:54 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/29 16:05:01 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ int	check_position(t_game *game, int x, int y)
 	else if (game->map[y][x] == 'C')
 	{
 		game->collects_taken++;
+		game->map[y][x] = '0';
 		return (1);
 	}
 	else if (game->map[y][x] == 'E')
 	{
-		if (game->collects_taken == 0)
+		if (game->collects_taken != game->count_collects)
 			return (0);
 		else
 		{
