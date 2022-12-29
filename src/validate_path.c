@@ -6,7 +6,7 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:43:08 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/27 18:10:02 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:20:35 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	check_path(char **map, int i, int j)
 	{
 		if (map[i + 1][j] == '0')
 			return (mark_path(map, i + 1, j));
-		else if (map[i - 1][j] == '0')
-			return (mark_path(map, i - 1, j));
 		else if (map[i][j + 1] == '0')
 			return (mark_path(map, i, j + 1));
+		else if (map[i - 1][j] == '0')
+			return (mark_path(map, i - 1, j));
 		else if (map[i][j - 1] == '0')
 			return (mark_path(map, i, j - 1));
 	}

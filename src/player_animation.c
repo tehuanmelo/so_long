@@ -6,7 +6,7 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:28:27 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/29 16:05:01 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:22:03 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	check_position(t_game *game, int x, int y)
 	else if (game->map[y][x] == 'C')
 	{
 		game->collects_taken++;
+		game->count_movements++;
+		ft_printf("%d\n", game->count_movements);
 		game->map[y][x] = '0';
 		return (1);
 	}
