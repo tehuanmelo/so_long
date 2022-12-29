@@ -6,11 +6,26 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/29 15:52:31 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:22:37 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	is_ber(char *file_name)
+{
+	char	*str;
+
+	str = ft_strrchr(file_name, '.');
+	if (!str)
+		return (0);
+	else if (ft_strlen(str) == 4)
+	{
+		if (!ft_strncmp(".ber", str, 4))
+			return (1);
+	}
+	return (0);
+}
 
 char	*read_map(char *str, int fd)
 {
@@ -36,6 +51,19 @@ char	*read_map(char *str, int fd)
 	return (str);
 }
 
+void	free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
+
 int	count_collects(char **map)
 {
 	int	i;
@@ -56,21 +84,6 @@ int	count_collects(char **map)
 		i++;
 	}
 	return (collects);
-}
-
-int	is_ber(char *file_name)
-{
-	char	*str;
-
-	str = ft_strrchr(file_name, '.');
-	if (!str)
-		return (0);
-	else if (ft_strlen(str) == 4)
-	{
-		if (!ft_strncmp(".ber", str, 4))
-			return (1);
-	}
-	return (0);
 }
 
 t_position	get_window_dimension(char **map)

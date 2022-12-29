@@ -6,7 +6,7 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/29 15:38:57 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:23:09 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,6 @@ void	initialize_game(t_game *game, char **map)
 	game->count_collects = count_collects(map);
 	create_sprites(game);
 	draw_map(game);
-}
-
-void	free_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
 }
 
 int	game_init(char *file_ber, t_game *game)
@@ -57,13 +44,12 @@ int	game_init(char *file_ber, t_game *game)
 		free_map(map);
 		map = ft_split(str, '\n');
 		initialize_game(game, map);
-	}
-	else
-	{
-		free_map(map);
-		return (0);
+		close(fd);
+		free(str);
+		return (1);
 	}
 	close(fd);
+	free_map(map);
 	free(str);
-	return (1);
+	return (0);
 }

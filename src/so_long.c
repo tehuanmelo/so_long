@@ -6,7 +6,7 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:05:47 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/29 16:29:00 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:34:21 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	key_hook(int keycode, t_game *game)
 	if (keycode == ESC)
 		end_game(game);
 	else
-		player_animation(game, keycode);
+		player_moves(game, keycode);
 	return (0);
 }
 

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_animation_utils.c                           :+:      :+:    :+:   */
+/*   player_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 01:28:27 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/22 20:32:57 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/29 18:32:58 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	move_right(t_game *game)
+static void	move_right(t_game *game)
 {
 	int	valid_position;
 	int	new_x_position;
@@ -29,7 +29,7 @@ void	move_right(t_game *game)
 	}
 }
 
-void	move_left(t_game *game)
+static void	move_left(t_game *game)
 {
 	int	valid_position;
 	int	new_x_position;
@@ -46,7 +46,7 @@ void	move_left(t_game *game)
 	}
 }
 
-void	move_up(t_game *game)
+static void	move_up(t_game *game)
 {
 	int	valid_position;
 	int	new_y_position;
@@ -63,7 +63,7 @@ void	move_up(t_game *game)
 	}
 }
 
-void	move_down(t_game *game)
+static void	move_down(t_game *game)
 {
 	int	valid_position;
 	int	new_y_position;
@@ -78,4 +78,16 @@ void	move_down(t_game *game)
 		draw_image(game, 'D', game->player_position.x, new_y_position);
 		game->player_position.y = new_y_position;
 	}
+}
+
+void	player_moves(t_game *game, int direction)
+{
+	if (direction == RIGHT || direction == DRIGHT)
+		move_right(game);
+	else if (direction == LEFT || direction == ALEFT)
+		move_left(game);
+	else if (direction == UP || direction == WUP)
+		move_up(game);
+	else if (direction == DOWN || direction == SDOWN)
+		move_down(game);
 }

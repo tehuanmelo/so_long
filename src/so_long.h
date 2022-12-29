@@ -6,7 +6,7 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 23:55:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/29 15:29:50 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:33:09 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,16 @@ enum			e_key_code
 };
 
 char			*read_map(char *str, int fd);
-void			player_animation(t_game *game, int direction);
+void			player_moves(t_game *game, int direction);
 void			draw_map(t_game *game);
-void			draw_image(t_game *game, char type, int x, int y);
 void			create_sprites(t_game *game);
-void			move_right(t_game *game);
-void			move_left(t_game *game);
-void			move_up(t_game *game);
-void			move_down(t_game *game);
-void			free_map(char **map);
+t_image			create_image(t_game *game, char type);
+void			draw_image(t_game *game, char type, int x, int y);
+
 void			initialize_game_struct(t_game *game, char **map);
 int				is_ber(char *file_name);
 int				game_init(char *file_ber, t_game *game);
 int				validate_map(char **map);
-int				end_game(t_game *game);
 int				check_position(t_game *game, int x, int y);
 int				check_walls(char **map);
 int				is_rectangular(char **map);
@@ -109,7 +105,9 @@ int				validate_exit(char **map);
 int				validate_collects(char **map);
 int				check_map_char_struct(char **map);
 int				count_collects(char **map);
-t_image			create_image(t_game *game, char type);
 t_position		get_window_dimension(char **map);
+
+void			free_map(char **map);
+int				end_game(t_game *game);
 
 #endif
