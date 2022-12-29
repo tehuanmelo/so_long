@@ -4,8 +4,8 @@ SRCFILES = create_image.c draw_map.c end_game.c initialize_game.c initialize_gam
 check_position.c so_long.c validate_elements.c validate_map.c validate_path.c draw_image.c
 SRC = $(foreach FILE,$(SRCFILES),./src/$(FILE))
 OBJ = $(SRC:.c=.o)
-CC = cc
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra 
 
 # PATHS
 LIBFT = ./inc/libft
