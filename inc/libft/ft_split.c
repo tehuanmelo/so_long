@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 23:20:42 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/25 22:33:01 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/30 20:41:19 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ int	ft_words(char const *s, char c)
 	counter = 0;
 	if (!*s)
 		return (0);
-	while (*s == c)
+	if (*s == c)
 		s++;
 	while (*s)
 	{
-		if ((*s == c && (*(s - 1)) != c) || (*s != c && (*(s + 1)) == 0))
+		// if ((*s == c && (*(s - 1)) != c) || (*s != c && (*(s + 1)) == 0))
+		if (*s == c || (*s != c && (*(s + 1)) == 0))
 			counter++;
 		s++;
 	}
+	printf("test 2 %d", counter);
 	return (counter);
 }
 

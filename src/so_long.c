@@ -6,7 +6,7 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:05:47 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/30 15:31:24 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/30 20:16:44 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		ft_printf("Error\nCheck the map path");
+		ft_printf("Error\nCheck the map path\n");
 		return (1);
 	}
 	return (0);

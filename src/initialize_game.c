@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_game.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/29 19:30:07 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/30 20:29:22 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	initialize_game(t_game *game, char **map)
 {
-	game->window_dimension = get_window_dimension(map);
-	game->map = map;
-	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, game->window_dimension.x,
-			game->window_dimension.y, "So_long!");
-	game->count_movements = 0;
-	game->collects_taken = 0;
-	game->count_collects = count_collects(map);
-	create_sprites(game);
-	draw_map(game);
+		game->window_dimension = get_window_dimension(map);
+		game->map = map;
+		game->mlx = mlx_init();
+		game->win = mlx_new_window(game->mlx, game->window_dimension.x,
+				game->window_dimension.y, "So_long!");
+		game->count_movements = 0;
+		game->collects_taken = 0;
+		game->count_collects = count_collects(map);
+		create_sprites(game);
+		draw_map(game);
 }
 
 int	game_init(char *file_ber, t_game *game)

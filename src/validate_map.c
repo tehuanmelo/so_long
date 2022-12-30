@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:43:08 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/22 20:51:41 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/30 20:31:25 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	is_rectangular(char **map)
 	first_line = (int)ft_strlen(map[i]);
 	while (map[i])
 	{
+		printf("test \n");
 		if ((int)ft_strlen(map[i]) != first_line)
 			return (0);
 		i++;
