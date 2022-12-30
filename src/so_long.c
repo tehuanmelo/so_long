@@ -6,7 +6,7 @@
 /*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:05:47 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/29 18:34:21 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/30 15:31:24 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int ac, char **av)
 		start_game = game_init(av[1], &game);
 		if (!start_game)
 		{
-			ft_printf("Error\nCould not initialize the game");
+			ft_printf("Error\nCould not initialize the game\n");
 			return (1);
 		}
 		mlx_key_hook(game.win, key_hook, &game);

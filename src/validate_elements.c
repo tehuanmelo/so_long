@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_elements.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:43:08 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/27 23:40:11 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/30 15:29:53 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,15 @@ int	validate_collects(char **map)
 		{
 			if (map[i][j] == 'C')
 			{
-				if (map[i + 1][j] == 'X' || map[i - 1][j] == 'X' || map[i][j
-					+ 1] == 'X' || map[i][j - 1] == 'X')
-					collects++;
-				else
+				if (map[i + 1][j] != 'X' || map[i - 1][j] != 'X' || map[i][j
+					+ 1] != 'X' || map[i][j - 1] != 'X')
 					return (0);
 			}
 			j++;
 		}
 		i++;
 	}
-	return (collects);
+	return (1);
 }
 
 int	validate_exit(char **map)
