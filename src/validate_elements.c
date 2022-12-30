@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_elements.c                                :+:      :+:    :+:   */
+/*   validate_elements.element                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:43:08 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/30 20:25:45 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/30 23:35:20 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_player_exit(char c)
+int	check_player_exit_collects(char element)
 {
-	int static	exit;
-	int static	player;
+	static int	exit;
+	static int	player;
+	static int	collects;
 
-	if (c == 'P')
+	if (element == 'P')
 		player++;
-	else if (c == 'E')
+	else if (element == 'E')
 		exit++;
-	if (player == 1 && exit == 1)
+	else if (element == 'C')
+		collects++;
+	if (player == 1 && exit == 1 && collects > 0)
 		return (1);
 	else
 		return (0);
@@ -43,8 +46,8 @@ int	check_map_char_struct(char **map)
 			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'P'
 				&& map[i][j] != 'E' && map[i][j] != 'C')
 				return (0);
-			else if (map[i][j] == 'P' || map[i][j] == 'E')
-				flag = check_player_exit(map[i][j]);
+			else if (map[i][j] == 'P' || map[i][j] == 'E' || map[i][j] == 'C')
+				flag = check_player_exit_collects(map[i][j]);
 			j++;
 		}
 		i++;
@@ -58,10 +61,8 @@ int	validate_collects(char **map)
 {
 	int	i;
 	int	j;
-	int	collects;
 
 	i = 1;
-	collects = 0;
 	while (map[i])
 	{
 		j = 1;
