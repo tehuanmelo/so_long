@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 23:55:30 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/29 18:33:09 by tde-melo         ###   ########.fr       */
+/*   Updated: 2023/01/01 22:05:17 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ enum			e_key_code
 	SDOWN = 1
 };
 
-char			*read_map(char *str, int fd);
+char			*read_map(int fd);
 void			player_moves(t_game *game, int direction);
 void			draw_map(t_game *game);
 void			create_sprites(t_game *game);

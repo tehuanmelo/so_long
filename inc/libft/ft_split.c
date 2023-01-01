@@ -6,7 +6,7 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 23:20:42 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/30 23:28:38 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2022/12/31 12:49:38 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,23 +92,3 @@ char	**ft_split(char const *s, char c)
 	}
 	return (new);
 }
-
-// int main(int ac, char **av)
-// {
-//     (void)ac;
-// 	char *ar = "  tehuan melo  ";
-//     char **new = ft_split(ar, ' ');
-// 	printf("%p\n", new);
-
-// 	freememory(new);
-// 	printf("%p\n", ar);
-
-//     // while(*new)
-//     // {
-//     //     printf("%p\n", *new++);
-//     //     // free(*new++);
-//     // }
-//     // printf ("%d\n", ft_words("\0aa\0bbb", '\0'));
-
-//     return (0);
-// }

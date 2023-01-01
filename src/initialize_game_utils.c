@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_game_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/29 18:22:37 by tde-melo         ###   ########.fr       */
+/*   Updated: 2022/12/31 13:01:45 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ int	is_ber(char *file_name)
 	return (0);
 }
 
-char	*read_map(char *str, int fd)
+char	*read_map(int fd)
 {
-	char	*buffer;
-	ssize_t	flag;
+	char			*buffer;
+	static char		*str;
+	ssize_t			flag;
 
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	buffer = malloc((BUFFER_SIZE) * sizeof(char));
 	if (!buffer)
 		return (NULL);
 	flag = 1;

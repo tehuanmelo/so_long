@@ -1,11 +1,10 @@
 NAME = so_long
 SRCPATH = ./src/
-SRCFILES = create_image.c draw_map.c end_game.c initialize_game.c initialize_game_utils.c player_moves.c\
-check_position.c so_long.c validate_elements.c validate_map.c validate_path.c draw_image.c
+SRCFILES = check_player_position.c create_image.c draw_image.c draw_map.c end_game.c initialize_game.c initialize_game_utils.c player_moves.c so_long.c validate_map.c validate_map_elements.c validate_map_structure.c 
 SRC = $(foreach FILE,$(SRCFILES),./src/$(FILE))
 OBJ = $(SRC:.c=.o)
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
 
 # PATHS
 LIBFT = ./inc/libft

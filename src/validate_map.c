@@ -6,50 +6,71 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:43:08 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/30 23:29:56 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/01/01 23:22:18 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	is_rectangular(char **map)
+int	mark_path(char **map, int i, int j)
 {
-	int	i;
-	int	first_line;
-
-	i = 0;
-	first_line = (int)ft_strlen(map[i]);
-	while (map[i])
-	{
-		if ((int)ft_strlen(map[i]) != first_line)
-			return (0);
-		i++;
-	}
-	if (i == first_line)
-		return (0);
+	map[i][j] = 'X';
 	return (1);
 }
 
-int	check_walls(char **map)
+int	check_path(char **map, int i, int j)
+{
+	if (map[i][j] == 'P')
+		return (mark_path(map, i, j));
+	else if (map[i][j] == 'X')
+	{
+		if (map[i + 1][j] == '0' || map[i + 1][j] == 'C')
+			return (mark_path(map, i + 1, j));
+		else if (map[i][j + 1] == '0' || map[i][j + 1] == 'C')
+			return (mark_path(map, i, j + 1));
+		else if (map[i - 1][j] == '0' || map[i - 1][j] == 'C')
+			return (mark_path(map, i - 1, j));
+		else if (map[i][j - 1] == '0' || map[i][j - 1] == 'C')
+			return (mark_path(map, i, j - 1));
+	}
+	return (0);
+}
+
+int	validate_path(char **map)
 {
 	int	i;
 	int	j;
-	int	last_col;
+	int	flag;
 
-	last_col = (int)ft_strlen(map[0]);
-	i = 0;
-	while (map[i])
+	flag = 1;
+	while (flag)
 	{
-		if (map[i][0] != '1' || map[i][last_col - 1] != '1')
-			return (0);
-		i++;
+		flag = 0;
+		i = 1;
+		while (map[i])
+		{
+			j = 1;
+			while (map[i][j])
+			{
+				flag = (flag || check_path(map, i, j));
+				j++;
+			}
+			i++;
+		}
 	}
-	j = 0;
-	while (map[0][j])
+	if (validate_exit(map))
+		return (1);
+	return (0);
+}
+
+int	validate_map(char **map)
+{
+	if (is_rectangular(map) && check_map_char_struct(map)
+		&& check_walls(map) && validate_path(map) && validate_collects(map))
+		return (1);
+	else
 	{
-		if (map[0][j] != '1' || map[i - 1][j] != '1')
-			return (0);
-		j++;
+		ft_printf("Error\nCheck the map configuration\n");
+		return (0);
 	}
-	return (1);
 }

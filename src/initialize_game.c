@@ -6,13 +6,13 @@
 /*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 18:26:16 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2022/12/31 00:00:58 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/01/01 23:24:52 by tehuanmelo       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	initialize_game(t_game *game, char **map)
+void	initialize_game_struct(t_game *game, char **map)
 {
 		game->window_dimension = get_window_dimension(map);
 		game->map = map;
@@ -32,10 +32,8 @@ int	game_init(char *file_ber, t_game *game)
 	char	*str;
 	char	**map;
 
-	str = malloc(sizeof(char));
-	str[0] = '\0';
 	fd = open(file_ber, O_RDONLY);
-	str = read_map(str, fd);
+	str = read_map(fd);
 	if (fd == -1 || str == NULL)
 		return (0);
 	map = ft_split(str, '\n');
@@ -43,7 +41,7 @@ int	game_init(char *file_ber, t_game *game)
 	{
 		free_map(map);
 		map = ft_split(str, '\n');
-		initialize_game(game, map);
+		initialize_game_struct(game, map);
 		close(fd);
 		free(str);
 		return (1);
