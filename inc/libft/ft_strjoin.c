@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:24:54 by tde-melo          #+#    #+#             */
-/*   Updated: 2022/12/31 12:47:19 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/01/05 12:01:22 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t	length;
 	int		i;
 
-	if (!s1 && !s2)
-		return NULL;
 	if (!s1)
 	{
 		s1 = malloc(sizeof(char));

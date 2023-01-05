@@ -4,7 +4,8 @@ SRCFILES = check_player_position.c create_image.c draw_image.c draw_map.c end_ga
 SRC = $(foreach FILE,$(SRCFILES),./src/$(FILE))
 OBJ = $(SRC:.c=.o)
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
+# CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra
 
 # PATHS
 LIBFT = ./inc/libft

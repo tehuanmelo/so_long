@@ -29,9 +29,9 @@ int	is_ber(char *file_name)
 
 char	*read_map(int fd)
 {
-	char			*buffer;
-	static char		*str;
-	ssize_t			flag;
+	char		*buffer;
+	static char	*str;
+	ssize_t		flag;
 
 	buffer = malloc((BUFFER_SIZE) * sizeof(char));
 	if (!buffer)

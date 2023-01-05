@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map_structure.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tehuanmelo <tehuanmelo@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tde-melo <tde-melo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:43:08 by tehuanmelo        #+#    #+#             */
-/*   Updated: 2023/01/01 23:24:07 by tehuanmelo       ###   ########.fr       */
+/*   Updated: 2023/01/05 11:45:00 by tde-melo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	is_rectangular(char **map)
 			return (0);
 		i++;
 	}
-	if (i == first_line)
+	if (i == first_line || i > 163)
 		return (0);
 	return (1);
 }
