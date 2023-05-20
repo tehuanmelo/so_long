@@ -3,15 +3,22 @@
 So_Long is a 2D game project developed as part of the 42 curriculum. 
 It is a simple game where the player must navigate through a map, collect items, and reach the exit while avoiding obstacles.
 
+
+
 ## Table of Contents
+- [Game History](#game-history)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Game Controls](#game-controls)
-- [Map Fprmat](#map-format)
+- [Map Format](#map-format)
 - [Example Map](#example-map)
 - [Game Play](#game-play)
 - [Support](#support)
 - [Acknowledgments](#acknowledgments)
+
+## Game History
+
+In the wintry forests of Japan, a brave samurai fights to protect his homeland. Armed with his trusty katana, he embarks on a mission to collect as many precious sushis as possible. Hidden amidst the snowy landscape, these sushis hold the key to preserving harmony and warding off darkness. With each swift move and decisive strike, the samurai faces challenges, demonstrating unwavering resolve. Driven by the urgency to restore balance and honor each sushi gathered becomes a symbol of hope. Through his bravery, the samurai upholds tradition and safeguards the future of his land. Will you join him on this noble quest and aid in the triumph over adversity?
 
 ## Getting Started
 
@@ -70,6 +77,8 @@ Here is an example of a So_Long map:
 ```
 
 ## Game Play
+
+![ezgif com-video-to-gif](https://github.com/tehuanmelo/so_long/assets/59938530/78c07c9b-3ddf-4cde-9baa-c5fa351d8708)
 
 
 ## Support
