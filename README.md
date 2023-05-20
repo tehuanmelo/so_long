@@ -70,10 +70,12 @@ The map for the So_Long game is provided in a text file with a .ber extension. T
 
 Here is an example of a So_Long map:
 ```
-111111
-100101
-1P00E1
-111C11
+111111111111111111
+1E0000000000000C01
+101001010010000011
+101001001010101001
+1P0000000C00C00001
+111111111111111111
 ```
 
 ## Game Play
