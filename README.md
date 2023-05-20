@@ -3,6 +3,7 @@
 So_Long is a 2D game project developed as part of the 42 curriculum. 
 It is a simple game where the player must navigate through a map, collect items, and reach the exit while avoiding obstacles.
 
+![ezgif com-video-to-gif](https://github.com/tehuanmelo/so_long/assets/59938530/78c07c9b-3ddf-4cde-9baa-c5fa351d8708)
 
 
 ## Table of Contents
@@ -12,7 +13,6 @@ It is a simple game where the player must navigate through a map, collect items,
 - [Game Controls](#game-controls)
 - [Map Format](#map-format)
 - [Example Map](#example-map)
-- [Game Play](#game-play)
 - [Support](#support)
 - [Acknowledgments](#acknowledgments)
 
@@ -77,11 +77,6 @@ Here is an example of a So_Long map:
 1P0000000C00C00001
 111111111111111111
 ```
-
-## Game Play
-
-![ezgif com-video-to-gif](https://github.com/tehuanmelo/so_long/assets/59938530/78c07c9b-3ddf-4cde-9baa-c5fa351d8708)
-
 
 ## Support
 
